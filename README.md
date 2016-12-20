@@ -40,14 +40,12 @@ Display the list of users:
 ### /users (POST)
 Add a new user:
 
-```$ curl -H "Content-Type: application/json" -X POST -d '{"name" : "TestUser","profession" : "Designer"}' http://localhost:8888/users
-```
+```$ curl -H "Content-Type: application/json" -X POST -d '{"name" : "TestUser","profession" : "Designer"}' http://localhost:8888/users```
 
 ### /users (PUT)
 Update user with id 1:
 
-```$ curl -H "Content-Type: application/json" -X PUT -d '{"name" : "New Name","profession" : "Designer"}' http://localhost:8888/users/1
-```
+```$ curl -H "Content-Type: application/json" -X PUT -d '{"name" : "New Name","profession" : "Designer"}' http://localhost:8888/users/1```
 
 ### /users (DELETE)
 Delete user with id 1:
