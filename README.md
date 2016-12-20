@@ -30,7 +30,7 @@ $ node server.js
 
 by default this server will listen on the port 8888 therefore it will be accessible at [http://120.0.0.1:8888/users](http://120.0.0.1:8888/users).
 
-### Endpoints
+## Endpoints
 
 ### /users (GET)
 Display the list of users:
