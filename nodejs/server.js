@@ -1,20 +1,24 @@
 
 // Import express:
-var express = require('express');
+let express = require('express');
 
 // Init express app:
-var app = express();
+let app = express();
 
 // In order to load the initial users form the json file.
 // Load fylesystem library:
-var fs = require('fs');
+let fs = require('fs');
 
 // Load json parser for HTTP requests:
-var bodyParser = require('body-parser')
+let bodyParser = require('body-parser')
 
 // Config app so to automatically parse the body of the HTTP request:
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+// Enable cross origin calls:
+var cors = require('cors');
+app.use(cors());
 
 // Load users list form a json string:
 var __data = [];
@@ -38,6 +42,11 @@ var formatList = function() {
     }
     return list;
 }
+
+/**
+  * Load application index as html UI.
+  */
+app.get('/', express.static(__dirname + '/ui/'))
 
 
 /**
@@ -69,8 +78,8 @@ app.post('/users', function (req, res) {
   * @return string list of users as a json string.
   */
 app.put('/users/:id', function (req, res) {
-    var id = req.params.id;
-    var updates = req.body;
+    let id = req.params.id;
+    let updates = req.body;
     if(global.__data[id] !== undefined) {
         global.__data[id].name = updates.name;
         global.__data[id].profession = updates.profession;
@@ -85,7 +94,7 @@ app.put('/users/:id', function (req, res) {
   * @return string list of users as a json string.
   */
 app.delete('/users/:id', function (req, res) {
-    var id = req.params.id;
+    let id = req.params.id;
     if(global.__data[id] !== undefined) {
         global.__data.splice(id, 1);
     }
@@ -94,8 +103,8 @@ app.delete('/users/:id', function (req, res) {
 
 
 // Run the server (http://127.0.0.1:8888):
-var server = app.listen(8888, function () {
-    var host = server.address().address
-    var port = server.address().port
+let server = app.listen(8888, function () {
+    let host = server.address().address
+    let port = server.address().port
     console.log('Server listening')
 })
